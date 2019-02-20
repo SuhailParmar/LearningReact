@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavigationBar from "./components/NavigationBar";
 import MotorwayMap from "./components/Image";
-import QuerySlider from "./components/QuerySlider";
+import MotorwayButtons from "./components/MotorwayButtons";
 class App extends Component {
   render() {
     let Motorway = "M6";
@@ -14,7 +14,7 @@ class App extends Component {
           <div className="searchTextDiv">
             <text> {middletext}</text>
           </div>
-          <QuerySlider Motorway={Motorway} />
+          <MotorwayButtons Motorway={Motorway} />
         </div>
       </div>
     );

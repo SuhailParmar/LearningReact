@@ -6,24 +6,44 @@ import React, { Component } from "react";
  */
 
 export default class MotorwayButtons extends Component {
-  onclick = () => {};
+  handleClick(event) {
+    this.Motorway = event.target.className;
+    console.log(this.Motorway);
+  }
 
   render() {
     return (
       <div className="mwButtons">
-        <button className="M1" style={btnStyle}>
+        <h4> {header} </h4>
+        <button
+          className="M1"
+          style={btnStyle}
+          onClick={this.handleClick.bind(this)}
+        >
           M1
         </button>
-        <button style={btnStyle}>M25</button>
-        <button style={btnStyle}>M6</button>
+        <button
+          className="M25"
+          style={btnStyle}
+          onClick={this.handleClick.bind(this)}
+        >
+          M25
+        </button>
+        <button
+          className="M6"
+          style={btnStyle}
+          onClick={this.handleClick.bind(this)}
+        >
+          M6
+        </button>
       </div>
     );
   }
 }
-
 let btnStyle = {
   margin: "10px",
   display: "inline-block"
+  //backgroundColor: "grey"
 };
 
-let Motorway = "M6";
+let header = "Which Motorway would you like to query?";
