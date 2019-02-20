@@ -3,9 +3,14 @@ import NavigationBar from "./components/NavigationBar";
 import MotorwayMap from "./components/Image";
 import MotorwayButtons from "./components/MotorwayButtons";
 class App extends Component {
-  render() {
-    let Motorway = "M6";
+  constructor() {
+    super();
+    this.state = {
+      Motorway: "M0"
+    };
+  }
 
+  render() {
     return (
       <div>
         <NavigationBar />
@@ -14,7 +19,7 @@ class App extends Component {
           <div className="searchTextDiv">
             <text> {middletext}</text>
           </div>
-          <MotorwayButtons Motorway={Motorway} />
+          <MotorwayButtons Motorway={this.state.Motorway} />
         </div>
       </div>
     );
