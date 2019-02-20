@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NavigationBar from "./components/NavigationBar";
 import MotorwayMap from "./components/Image";
 import MotorwayButtons from "./components/MotorwayButtons";
+import DaysButtons from "./components/DaysOfWeek";
 class App extends Component {
   constructor() {
     super();
@@ -20,6 +21,7 @@ class App extends Component {
             <text> {middletext}</text>
           </div>
           <MotorwayButtons Motorway={this.state.Motorway} />
+          <DaysButtons />
         </div>
       </div>
     );

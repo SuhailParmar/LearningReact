@@ -25,10 +25,6 @@ export default class MotorwayButtons extends Component {
     this.setState({ buttonColours, Motorway });
   }
 
-  getMotorway() {
-    return this.Motorway;
-  }
-
   render() {
     console.log("Clicked " + this.state.Motorway);
     return (
