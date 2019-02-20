@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from "react";
+import NavigationBar from "./components/NavigationBar";
+import MotorwayMap from "./components/Image";
+import QuerySlider from "./components/QuerySlider";
 class App extends Component {
   render() {
+    let Motorway = "M6";
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <NavigationBar />
+        <div className="appContainer">
+          <h1 className="searchTitle">{title}</h1>
+          <div className="searchTextDiv">
+            <text> {middletext}</text>
+          </div>
+          <QuerySlider Motorway={Motorway} />
+        </div>
       </div>
     );
   }
 }
 
+// HTML
+var title = "Search our Motorway database";
+var middletext = `
+On this page you're able to query the live motorway API,
+you are able to see incident information on multiple
+different motorways. You can query at any time of day.
+Information is provided from the highways agency.
+`;
+
 export default App;
+//<MotorwayMap />
