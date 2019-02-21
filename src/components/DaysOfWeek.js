@@ -13,13 +13,9 @@ export default class DaysButtons extends Component {
     }
   };
 
-  handleClick(day, event) {
+  handleClick(day) {
     let daysOfWeek = this.state.daysOfWeek;
-    if (daysOfWeek[day] == 0) {
-      daysOfWeek[day] = 1;
-    } else {
-      daysOfWeek[day] = 0;
-    } //? 1 : 0;
+    daysOfWeek[day] === 0 ? (daysOfWeek[day] = 1) : (daysOfWeek[day] = 0);
     console.log(daysOfWeek);
     this.setState({ daysOfWeek });
   }

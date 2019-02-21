@@ -3,6 +3,7 @@ import NavigationBar from "./components/NavigationBar";
 import MotorwayMap from "./components/Image";
 import MotorwayButtons from "./components/MotorwayButtons";
 import DaysButtons from "./components/DaysOfWeek";
+import IncidentButtons from "./components/IncidentButtons";
 class App extends Component {
   constructor() {
     super();
@@ -21,6 +22,7 @@ class App extends Component {
             <text> {middletext}</text>
           </div>
           <MotorwayButtons Motorway={this.state.Motorway} />
+          <IncidentButtons />
           <DaysButtons />
         </div>
       </div>
