@@ -4,6 +4,7 @@ import MotorwayMap from "./components/Image";
 import MotorwayButtons from "./components/MotorwayButtons";
 import DaysButtons from "./components/DaysOfWeek";
 import IncidentButtons from "./components/IncidentButtons";
+import JunctionButtons from "./components/JunctionButttons";
 class App extends Component {
   constructor() {
     super();
@@ -23,6 +24,7 @@ class App extends Component {
           </div>
           <MotorwayButtons Motorway={this.state.Motorway} />
           <IncidentButtons />
+          <JunctionButtons />
           <DaysButtons />
         </div>
       </div>
