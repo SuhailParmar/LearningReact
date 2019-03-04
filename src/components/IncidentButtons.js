@@ -74,4 +74,4 @@ export default class IncidentButtons extends Component {
   }
 }
 
-let header = "Which Incident would you like to query?";
+let header = "Which Incident would you like to query? (Mandatory)";

@@ -23,7 +23,9 @@ export default class DaysButtons extends Component {
   render() {
     return (
       <div className="daysButtons">
-        <h4>What days of the week are you interested in?</h4>
+        <h4>
+          Is there a day of the week you are most interested in? (Not Mandatory)
+        </h4>
         <button
           className="Mon"
           style={{

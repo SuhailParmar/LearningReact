@@ -72,4 +72,4 @@ let m = {
   display: "inline-block"
 };
 
-let header = "Which Motorway would you like to investigate?";
+let header = "Which Motorway would you like to investigate? (Mandatory)";
