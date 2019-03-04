@@ -5,6 +5,7 @@ import MotorwayButtons from "./components/MotorwayButtons";
 import DaysButtons from "./components/DaysOfWeek";
 import IncidentButtons from "./components/IncidentButtons";
 import JunctionButtons from "./components/JunctionButttons";
+import TimeButtons from "./components/TimeButtons";
 class App extends Component {
   constructor() {
     super();
@@ -26,6 +27,7 @@ class App extends Component {
           <IncidentButtons />
           <JunctionButtons />
           <DaysButtons />
+          <TimeButtons />
         </div>
       </div>
     );
