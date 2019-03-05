@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import TimeField from "react-simple-timefield";
 
 export default class TimeButtons extends Component {
-  constructor() {
+
+  constructor(){
     super();
     this.state = {
       time: "00:00:00"
-    };
-
-    this.onTimeChange = this.onTimeChange.bind(this);
+    }
   }
 
-  onTimeChange(time) {
-    this.setState({ time });
-    console.log(this.state.time);
+  onTimeChange = (time) => {
+    //this.setState({ time });
+    this.setState({time});
+    this.props.stateHandler({time});
   }
 
   render() {
-    const { time } = this.state;
+    const { time } = this.state.time;
 
     return (
       <div className="timeButtons">

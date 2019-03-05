@@ -5,14 +5,8 @@ export default class IncidentButtons extends Component {
     super();
     this.state = {
       buttonColours: ["grey", "grey", "grey"],
-      Incident: ""
     };
   }
-
-  /*state = {
-    buttonColours: ["grey", "grey", "grey"],
-    Incident: ""
-  };*/
 
   /**
    * On button click save the Label to a variable
@@ -23,16 +17,15 @@ export default class IncidentButtons extends Component {
    */
   handleClick(index, e) {
     let buttonColours = this.state.buttonColours;
-    let Incident = e.target.className; // Get the motorway button clicked
     for (var i = 0; i < buttonColours.length; i++) {
       i == index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
-    this.setState({ buttonColours, Incident });
-    console.log(this.state.Incident);
+    this.setState({buttonColours});
+    let Incident = e.target.className; // Get the motorway button clicked
+    this.props.stateHandler({Incident}); // Update Parent
   }
 
   render() {
-    console.log("Clicked " + this.state.Incident);
     return (
       <div className="mwButtons">
         <h4> {header} </h4>

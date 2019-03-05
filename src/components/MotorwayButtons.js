@@ -14,19 +14,15 @@ export default class MotorwayButtons extends Component {
    */
   handleClick(index, e) {
     let buttonColours = this.state.buttonColours;
-    let Motorway = e.target.className;
     for (var i = 0; i < buttonColours.length; i++) {
-      if (i == index) {
-        buttonColours[i] = "red";
-      } else {
-        buttonColours[i] = "grey";
-      }
+      i === index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
-    this.setState({ buttonColours, Motorway });
+    this.setState({ buttonColours });
+    let Motorway = e.target.className;
+    this.props.stateHandler({Motorway})
   }
 
   render() {
-    console.log("Clicked " + this.state.Motorway);
     return (
       <div className="mwButtons">
         <h4> {header} </h4>

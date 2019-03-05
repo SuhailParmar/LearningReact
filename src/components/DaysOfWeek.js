@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 export default class DaysButtons extends Component {
-  state = {
+  state = { // Using Local state for button colours.
+    // TODO Use parent state only.
     daysOfWeek: {
       Mon: 0, //If clicked
       Tue: 0,
@@ -16,8 +17,8 @@ export default class DaysButtons extends Component {
   handleClick(day) {
     let daysOfWeek = this.state.daysOfWeek;
     daysOfWeek[day] === 0 ? (daysOfWeek[day] = 1) : (daysOfWeek[day] = 0);
-    console.log(daysOfWeek);
     this.setState({ daysOfWeek });
+    this.props.stateHandler({daysOfWeek}); // Update Parent
   }
 
   render() {

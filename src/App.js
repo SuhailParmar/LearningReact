@@ -10,8 +10,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      Motorway: "M0"
+      Motorway: "",
+      Junction: "",
+      Incident: "",
+      daysOfWeek: {
+        Mon: 0, //If clicked
+        Tue: 0,
+        Wed: 0,
+        Thu: 0,
+        Fri: 0,
+        Sat: 0,
+        Sun: 0
+      },
+      Time: ""
     };
+  }
+
+  stateHandler = (value) => {
+    this.setState(value);
+    console.log(this.state);
   }
 
   render() {
@@ -23,11 +40,11 @@ class App extends Component {
           <div className="searchTextDiv">
             <text> {middletext}</text>
           </div>
-          <MotorwayButtons Motorway={this.state.Motorway} />
-          <IncidentButtons />
-          <JunctionButtons />
-          <DaysButtons />
-          <TimeButtons />
+          <MotorwayButtons stateHandler={this.stateHandler} />
+          <IncidentButtons stateHandler={this.stateHandler}/>
+          <JunctionButtons stateHandler={this.stateHandler}/>
+          <DaysButtons stateHandler={this.stateHandler}/>
+          <TimeButtons stateHandler={this.stateHandler}/>
         </div>
       </div>
     );

@@ -14,19 +14,16 @@ export default class JunctionButtons extends Component {
    */
   handleClick(index, e) {
     let buttonColours = this.state.buttonColours;
-    let Junction = e.target.className;
     for (var i = 0; i < buttonColours.length; i++) {
-      if (i == index) {
-        buttonColours[i] = "red";
-      } else {
-        buttonColours[i] = "grey";
-      }
+      i === index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
-    this.setState({ buttonColours, Junction });
+
+    let Junction = e.target.className;
+    this.setState({ buttonColours });
+    this.props.stateHandler({Junction});
   }
 
   render() {
-    console.log("Clicked " + this.state.Junction);
     return (
       <div className="juncButtons">
         <h4> {header} </h4>
@@ -67,10 +64,6 @@ export default class JunctionButtons extends Component {
     );
   }
 }
-let m = {
-  margin: "10px",
-  display: "inline-block"
-};
 
 let header =
   "Is there a specific Junction you would like to investigate? (Not Mandatory)";
