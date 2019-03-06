@@ -6,7 +6,9 @@ import DaysButtons from "./components/DaysOfWeek";
 import IncidentButtons from "./components/IncidentButtons";
 import JunctionButtons from "./components/JunctionButttons";
 import TimeButtons from "./components/TimeButtons";
-class App extends Component {
+import { saveAuthToken } from "./authdata/auth";
+
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,6 +28,11 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    saveAuthToken();
+    console.log('HELLIO');
+  }
+
   stateHandler = (value) => {
     this.setState(value);
     console.log(this.state);
@@ -38,7 +45,7 @@ class App extends Component {
         <div className="appContainer">
           <h1 className="searchTitle">{title}</h1>
           <div className="searchTextDiv">
-            <text> {middletext}</text>
+            {middletext}
           </div>
           <MotorwayButtons stateHandler={this.stateHandler} />
           <IncidentButtons stateHandler={this.stateHandler}/>
@@ -52,7 +59,7 @@ class App extends Component {
 }
 
 // HTML
-var title = "Search our Motorway database";
+var title = "Search our Motorway dataaaabase";
 var middletext = `
 On this page you're able to query the live motorway API,
 you are able to see incident information on multiple
@@ -60,5 +67,8 @@ different motorways. You can query at any time of day.
 Information is provided from the highways agency.
 `;
 
-export default App;
-//<MotorwayMap />
+
+function postRequest(url, data){
+}
+
+//fetch('http://localhost:8000/api/events')
