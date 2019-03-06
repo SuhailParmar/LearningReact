@@ -6,16 +6,17 @@ import DaysButtons from "./components/DaysOfWeek";
 import IncidentButtons from "./components/IncidentButtons";
 import JunctionButtons from "./components/JunctionButttons";
 import TimeButtons from "./components/TimeButtons";
-import { saveAuthToken } from "./authdata/auth";
+import { saveAuthToken } from "./middleware/auth";
 import { authenticatedRequest } from "./middleware/request";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      /*
       Motorway: "",
       Junction: "",
-      Incident: "",
+      reason: "",
       daysOfWeek: {
         Mon: 0, //If clicked
         Tue: 0,
@@ -25,20 +26,39 @@ export default class App extends Component {
         Sat: 0,
         Sun: 0
       },
-      Time: ""
+      Time: ""*/
     };
   }
 
   componentDidMount() {
+    /**
+     * On page load grab the authorization token
+     */
     saveAuthToken();
-    console.log('HELLIO');
-    authenticatedRequest('http://localhost:8000/api/events/').then(res => console.log(res))
+    console.log("Saved Auth token to local storage.");
   }
 
-  stateHandler = (value) => {
+  stateHandler = value => {
     this.setState(value);
     console.log(this.state);
-  }
+  };
+
+  buildQueryString = () => {
+    let query = Object.keys(this.state)
+      .map(key => key + "=" + this.state[key])
+      .join("&");
+    console.log(query);
+    return query;
+  };
+
+  getFromAPI = () => {
+    let query = this.buildQueryString();
+    if (query) {
+      let url = "http://localhost:8000/api/events/?" + query;
+      console.log(url);
+      let x = authenticatedRequest(url).then(res => console.log(res));
+    }
+  };
 
   render() {
     return (
@@ -46,14 +66,15 @@ export default class App extends Component {
         <NavigationBar />
         <div className="appContainer">
           <h1 className="searchTitle">{title}</h1>
-          <div className="searchTextDiv">
-            {middletext}
-          </div>
+          <div className="searchTextDiv">{middletext}</div>
           <MotorwayButtons stateHandler={this.stateHandler} />
-          <IncidentButtons stateHandler={this.stateHandler}/>
-          <JunctionButtons stateHandler={this.stateHandler}/>
-          <DaysButtons stateHandler={this.stateHandler}/>
-          <TimeButtons stateHandler={this.stateHandler}/>
+          <IncidentButtons stateHandler={this.stateHandler} />
+          <JunctionButtons stateHandler={this.stateHandler} />
+          <DaysButtons stateHandler={this.stateHandler} />
+          <TimeButtons stateHandler={this.stateHandler} />
+          <div className="submit">
+            <button onClick={this.getFromAPI}>Search!</button>
+          </div>
         </div>
       </div>
     );
@@ -68,8 +89,3 @@ you are able to see incident information on multiple
 different motorways. You can query at any time of day.
 Information is provided from the highways agency.
 `;
-
-
-function postRequest(url, data){
-}
-

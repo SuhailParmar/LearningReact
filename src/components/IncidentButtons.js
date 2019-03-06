@@ -4,7 +4,7 @@ export default class IncidentButtons extends Component {
   constructor() {
     super();
     this.state = {
-      buttonColours: ["grey", "grey", "grey"],
+      buttonColours: ["grey", "grey", "grey"]
     };
   }
 
@@ -20,9 +20,9 @@ export default class IncidentButtons extends Component {
     for (var i = 0; i < buttonColours.length; i++) {
       i === index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
-    this.setState({buttonColours});
+    this.setState({ buttonColours });
     let Incident = e.target.className; // Get the motorway button clicked
-    this.props.stateHandler({Incident}); // Update Parent
+    this.props.stateHandler({ reason: Incident }); // Update Parent
   }
 
   render() {
@@ -41,7 +41,7 @@ export default class IncidentButtons extends Component {
           General-Obstruction
         </button>
         <button
-          className="Congestion"
+          className="congestion"
           style={{
             backgroundColor: this.state.buttonColours[1],
             margin: "10px",
@@ -52,7 +52,7 @@ export default class IncidentButtons extends Component {
           Congestion
         </button>
         <button
-          className="Accident"
+          className="accident"
           style={{
             backgroundColor: this.state.buttonColours[2],
             margin: "10px",

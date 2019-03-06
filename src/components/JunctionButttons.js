@@ -17,10 +17,10 @@ export default class JunctionButtons extends Component {
     for (var i = 0; i < buttonColours.length; i++) {
       i === index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
-
-    let Junction = e.target.className;
+    // Junction is a stored as an array. Postgres requires {} for array fields.
+    let junction = "{" + e.target.className + "}";
     this.setState({ buttonColours });
-    this.props.stateHandler({Junction});
+    this.props.stateHandler({ junction });
   }
 
   render() {

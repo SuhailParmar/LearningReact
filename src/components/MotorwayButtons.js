@@ -18,8 +18,8 @@ export default class MotorwayButtons extends Component {
       i === index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
     this.setState({ buttonColours });
-    let Motorway = e.target.className;
-    this.props.stateHandler({Motorway})
+    let motorway = e.target.className;
+    this.props.stateHandler({ motorway });
   }
 
   render() {
@@ -27,7 +27,7 @@ export default class MotorwayButtons extends Component {
       <div className="mwButtons">
         <h4> {header} </h4>
         <button
-          className="M1"
+          className="1"
           style={{
             backgroundColor: this.state.buttonColours[0],
             margin: "10px",
@@ -38,7 +38,7 @@ export default class MotorwayButtons extends Component {
           M1
         </button>
         <button
-          className="M25"
+          className="25"
           style={{
             backgroundColor: this.state.buttonColours[1],
             margin: "10px",
@@ -49,7 +49,7 @@ export default class MotorwayButtons extends Component {
           M25
         </button>
         <button
-          className="M6"
+          className="6"
           style={{
             backgroundColor: this.state.buttonColours[2],
             margin: "10px",
