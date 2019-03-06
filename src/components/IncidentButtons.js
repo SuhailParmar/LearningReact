@@ -18,7 +18,7 @@ export default class IncidentButtons extends Component {
   handleClick(index, e) {
     let buttonColours = this.state.buttonColours;
     for (var i = 0; i < buttonColours.length; i++) {
-      i == index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
+      i === index ? (buttonColours[i] = "red") : (buttonColours[i] = "grey");
     }
     this.setState({buttonColours});
     let Incident = e.target.className; // Get the motorway button clicked

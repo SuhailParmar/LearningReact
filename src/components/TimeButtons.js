@@ -11,7 +11,6 @@ export default class TimeButtons extends Component {
   }
 
   onTimeChange = (time) => {
-    //this.setState({ time });
     this.setState({time});
     this.props.stateHandler({time});
   }

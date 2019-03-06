@@ -7,6 +7,7 @@ import IncidentButtons from "./components/IncidentButtons";
 import JunctionButtons from "./components/JunctionButttons";
 import TimeButtons from "./components/TimeButtons";
 import { saveAuthToken } from "./authdata/auth";
+import { authenticatedRequest } from "./middleware/request";
 
 export default class App extends Component {
   constructor() {
@@ -31,6 +32,7 @@ export default class App extends Component {
   componentDidMount() {
     saveAuthToken();
     console.log('HELLIO');
+    authenticatedRequest('http://localhost:8000/api/events/').then(res => console.log(res))
   }
 
   stateHandler = (value) => {
@@ -71,4 +73,3 @@ Information is provided from the highways agency.
 function postRequest(url, data){
 }
 
-//fetch('http://localhost:8000/api/events')
