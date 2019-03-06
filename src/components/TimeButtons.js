@@ -23,12 +23,16 @@ export default class TimeButtons extends Component {
   };
 
   render() {
-    const { time } = this.state.time;
+    // /const { time } = this.state.time;
 
     return (
       <div className="timeButtons">
         <h4> {header} </h4>
-        <TimeField value={time} onChange={this.onTimeChange} showSeconds />
+        <TimeField
+          value={this.state.time}
+          onChange={this.onTimeChange}
+          showSeconds
+        />
       </div>
     );
   }

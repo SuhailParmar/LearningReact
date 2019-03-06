@@ -8,26 +8,13 @@ import JunctionButtons from "./components/JunctionButttons";
 import TimeButtons from "./components/TimeButtons";
 import { saveAuthToken } from "./middleware/auth";
 import { authenticatedRequest } from "./middleware/request";
+import { BrowserRouter as Router } from "react-router-dom";
+import Route from "react-router-dom/Route";
 
 export default class App extends Component {
   constructor() {
     super();
-    this.state = {
-      /*
-      Motorway: "",
-      Junction: "",
-      reason: "",
-      daysOfWeek: {
-        Mon: 0, //If clicked
-        Tue: 0,
-        Wed: 0,
-        Thu: 0,
-        Fri: 0,
-        Sat: 0,
-        Sun: 0
-      },
-      Time: ""*/
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -56,27 +43,57 @@ export default class App extends Component {
     if (query) {
       let url = "http://localhost:8000/api/events/?" + query;
       console.log(url);
-      let x = authenticatedRequest(url).then(res => console.log(res));
+      let x = authenticatedRequest(url).then(result => {
+        this.setState({ data: result });
+        console.log(this.state.data);
+      });
     }
   };
 
   render() {
     return (
-      <div>
-        <NavigationBar />
-        <div className="appContainer">
-          <h1 className="searchTitle">{title}</h1>
-          <div className="searchTextDiv">{middletext}</div>
-          <MotorwayButtons stateHandler={this.stateHandler} />
-          <IncidentButtons stateHandler={this.stateHandler} />
-          <JunctionButtons stateHandler={this.stateHandler} />
-          <DaysButtons stateHandler={this.stateHandler} />
-          <TimeButtons stateHandler={this.stateHandler} />
-          <div className="submit">
-            <button onClick={this.getFromAPI}>Search!</button>
-          </div>
+      <Router>
+        <div className="App">
+          <NavigationBar />
+          <Route
+            path="/search"
+            render={() => {
+              return (
+                <div className="searchPage">
+                  <h1 className="searchTitle">{title}</h1>
+                  <div className="searchTextDiv">{middletext}</div>
+                  <MotorwayButtons stateHandler={this.stateHandler} />
+                  <IncidentButtons stateHandler={this.stateHandler} />
+                  <JunctionButtons stateHandler={this.stateHandler} />
+                  <DaysButtons stateHandler={this.stateHandler} />
+                  <TimeButtons stateHandler={this.stateHandler} />
+                  <div className="submit">
+                    <button onClick={this.getFromAPI}>Search!</button>
+                  </div>
+                </div>
+              );
+            }}
+          />
+          <Route
+            path="/result"
+            render={() => {
+              return <h1>Temp</h1>;
+            }}
+          />
+          <Route
+            path="/help"
+            render={() => {
+              return <h1>Help</h1>;
+            }}
+          />
+          <Route
+            path="/home"
+            render={() => {
+              return <h1>Home</h1>;
+            }}
+          />
         </div>
-      </div>
+      </Router>
     );
   }
 }

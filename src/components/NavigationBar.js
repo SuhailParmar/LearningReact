@@ -8,15 +8,14 @@ export default class NavigationBar extends Component {
     return (
       <nav className="navbar">
         <Navbar fixed="top">
-          <Navbar.Brand href="home">Motorway Information</Navbar.Brand>
+          <Navbar.Brand href="home">
+            Suhail's Motorway Information Query
+          </Navbar.Brand>
           <Nav.Item>
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="search">Search</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#search">Search</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="#help">Help</Nav.Link>
+            <Nav.Link href="help">Help</Nav.Link>
           </Nav.Item>
         </Navbar>
       </nav>
