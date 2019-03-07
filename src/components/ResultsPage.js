@@ -13,7 +13,8 @@ export default class ResultsPage extends Component {
       data: [
         {
           time_day_worded: "Mon",
-          reason: 1
+          reason: 1,
+          time_year: "2019"
         }
       ]
     };
@@ -23,7 +24,7 @@ export default class ResultsPage extends Component {
     console.log(this.props.url);
     authenticatedRequest(this.props.url).then(result => {
       this.setState({ data: result });
-      console.log(this.state.data);
+      console.log(result);
     });
   };
 
@@ -31,29 +32,19 @@ export default class ResultsPage extends Component {
     this.getEventsFromAPI();
   }
 
-  chartRender() {
-    const sdata = [
-      { quarter: 1, earnings: 13000 },
-      { quarter: 2, earnings: 16500 },
-      { quarter: 3, earnings: 14250 },
-      { quarter: 4, earnings: 19000 }
-    ];
-
-    const x = [
-      {
-        time_day_worded: "Mon",
-        reason: "accident"
-      }
-    ];
-
+  chartRender = () => {
     return (
       <div>
-        <VictoryChart>
-          <VictoryBar data={this.state.data} x="time_day_worded" y="reason" />
+        <VictoryChart domainPadding={20}>
+          <VictoryBar
+            data={this.state.data}
+            x="time_day_worded"
+            //y="time_year"
+          />
         </VictoryChart>
       </div>
     );
-  }
+  };
 
   render() {
     return (
