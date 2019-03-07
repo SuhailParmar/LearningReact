@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import NavigationBar from "./components/NavigationBar";
-import MotorwayMap from "./components/Image";
+//import MotorwayMap from "./components/Image";
 import MotorwayButtons from "./components/MotorwayButtons";
 import DaysButtons from "./components/DaysOfWeek";
 import IncidentButtons from "./components/IncidentButtons";
 import JunctionButtons from "./components/JunctionButttons";
 import TimeButtons from "./components/TimeButtons";
 import { saveAuthToken } from "./middleware/auth";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Route from "react-router-dom/Route";
 import ResultsPage from "./components/ResultsPage";
 
@@ -34,13 +34,9 @@ export default class App extends Component {
     let query = Object.keys(this.state)
       .map(key => key + "=" + this.state[key])
       .join("&");
-    console.log(query);
     if (query) {
-      // Refactor to use props
-      localStorage.setItem("QUERY_STRING", query);
-      var t = setTimeout(() => {
-        window.open("/result");
-      }, 20);
+      let url = "http://localhost:8000/api/events/?" + query;
+      return url;
     }
   };
 
@@ -62,13 +58,24 @@ export default class App extends Component {
                   <DaysButtons stateHandler={this.stateHandler} />
                   <TimeButtons stateHandler={this.stateHandler} />
                   <div className="submit">
-                    <button onClick={this.buildQueryString}>Search!</button>
+                    <Link
+                      to="/result"
+                      type="button"
+                      params={{ url: this.buildQueryString }}
+                    >
+                      Search!
+                    </Link>
                   </div>
                 </div>
               );
             }}
           />
-          <Route path="/result" render={() => <ResultsPage />} />
+          <Route
+            path="/result"
+            render={props => (
+              <ResultsPage {...props} url={this.buildQueryString()} />
+            )}
+          />
           <Route
             path="/help"
             render={() => {
