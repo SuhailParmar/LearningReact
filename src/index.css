@@ -71,3 +71,10 @@ html {
   width: 50%;
   text-align: center;
 }
+
+.submit {
+  padding: 14px 16px;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
