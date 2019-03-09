@@ -63,9 +63,5 @@ export default class MotorwayButtons extends Component {
     );
   }
 }
-let m = {
-  margin: "10px",
-  display: "inline-block"
-};
 
 let header = "Which Motorway would you like to investigate? (Mandatory)";

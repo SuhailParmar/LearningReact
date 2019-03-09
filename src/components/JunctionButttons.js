@@ -39,7 +39,7 @@ export default class JunctionButtons extends Component {
           J3
         </button>
         <button
-          className="J41"
+          className="J10"
           style={{
             backgroundColor: this.state.buttonColours[1],
             margin: "10px",
@@ -50,7 +50,7 @@ export default class JunctionButtons extends Component {
           J41
         </button>
         <button
-          className="J32"
+          className="J19"
           style={{
             backgroundColor: this.state.buttonColours[2],
             margin: "10px",

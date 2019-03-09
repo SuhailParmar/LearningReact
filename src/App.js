@@ -27,7 +27,7 @@ export default class App extends Component {
 
   stateHandler = value => {
     this.setState(value);
-    console.log(this.state);
+    //console.log(this.state);
   };
 
   buildQueryString = () => {
@@ -95,7 +95,7 @@ export default class App extends Component {
 }
 
 // HTML
-var title = "Search our Motorway dataaaabase";
+var title = "Search our Motorway database!";
 var middletext = `
 On this page you're able to query the live motorway API,
 you are able to see incident information on multiple
