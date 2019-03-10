@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { authenticatedRequest } from "../middleware/request";
 import {
   VictoryBar,
-  VictoryGroup,
   VictoryAxis,
   VictoryChart,
   VictoryLine,
@@ -22,19 +21,22 @@ export default class ResultsPage extends Component {
           time_day_worded: "Mon",
           time_year: "2019",
           junction: 1,
-          reason: "accident"
+          reason: "accident",
+          time_hour: 12
         },
         {
           time_day_worded: "Tue",
           time_year: "2019",
           junction: 2,
-          reason: "accident"
+          reason: "accident",
+          time_hour: 12
         },
         {
           time_day_worded: "Tue",
           time_year: "2019",
           junction: 3,
-          reason: "congestion"
+          reason: "congestion",
+          time_hour: 6
         }
       ]
     };
@@ -174,11 +176,49 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="incByDay">
-        <h4>Line Chart: Number of incidents per day</h4>
+        <h4>Line Chart: Number of incidents recorded by day</h4>
         <VictoryChart>
           <VictoryAxis dependentAxis tickFormat={ticky} label="Occurrence" />
           <VictoryAxis padding={20} label="Day of the week" />
           <VictoryLine data={lineData} sortKey="x" />
+        </VictoryChart>
+      </div>
+    );
+  };
+
+  renderIncidentsByHour = () => {
+    let lineData = [];
+    this.state.data.forEach(event => {
+      let hour = event.time_hour;
+      let index = -1;
+      for (var i = 0; i < lineData.length; i++) {
+        if (lineData[i].x === hour) {
+          index = i;
+          break;
+        }
+      }
+
+      index === -1 ? lineData.push({ x: hour, y: 1 }) : (lineData[i].y += 1);
+    });
+
+    // Create the values for the Y axis
+    let ticky = [];
+    lineData.forEach(j => {
+      ticky.push(j.y);
+    });
+
+    return (
+      <div className="incPerHour">
+        <h4>Bar Chart: Number of incidents per Junction</h4>
+        <VictoryChart domainPadding={10}>
+          <VictoryAxis padding={2} label="Hour Of Day (24/hr format)" />
+          <VictoryAxis dependentAxis tickFormat={ticky} label="Occurrence" />
+          <VictoryBar
+            sortKey="x"
+            data={lineData}
+            barWidth={5}
+            //labels={l => `${l.x}:00`}
+          />
         </VictoryChart>
       </div>
     );
@@ -193,11 +233,8 @@ export default class ResultsPage extends Component {
         <this.renderIncidentsPerJunction />
         <this.renderIncidentsByType />
         <this.renderIncidentsByDay />
+        <this.renderIncidentsByHour />
       </div>
     );
   }
 }
-
-/**
- * <h4>{this.state.data}</h4>
- */
