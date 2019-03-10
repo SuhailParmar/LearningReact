@@ -5,7 +5,8 @@ import {
   VictoryGroup,
   VictoryAxis,
   VictoryChart,
-  VictoryScatter
+  VictoryLabel,
+  VictoryPie
 } from "victory";
 
 /**
@@ -20,22 +21,20 @@ export default class ResultsPage extends Component {
         {
           time_day_worded: "Mon",
           time_year: "2019",
-          junction: 1
+          junction: 1,
+          reason: "accident"
         },
         {
           time_day_worded: "Tue",
           time_year: "2019",
-          junction: 2
+          junction: 2,
+          reason: "accident"
         },
         {
           time_day_worded: "Tue",
           time_year: "2019",
-          junction: 3
-        },
-        {
-          time_day_worded: "Tue",
-          time_year: "2019",
-          junction: 3
+          junction: 3,
+          reason: "congestion"
         }
       ]
     };
@@ -59,6 +58,16 @@ export default class ResultsPage extends Component {
   componentDidMount() {
     this.getEventsFromAPI();
   }
+
+  renderIncidentsRecorded = () => {
+    return (
+      <div className="incRecorded">
+        <h3>
+          There are {this.state.data.length} recorded incidents in the database.
+        </h3>
+      </div>
+    );
+  };
 
   renderIncidentsPerJunction = () => {
     // Create a graph based on number of
@@ -90,10 +99,10 @@ export default class ResultsPage extends Component {
 
     return (
       <div className="incPerJunc">
-        <h3>Number of incidents per Junction</h3>
+        <h4>Bar Chart: Number of incidents per Junction</h4>
         <VictoryChart domainPadding={10}>
-          <VictoryAxis />
-          <VictoryAxis dependentAxis tickFormat={ticky} />
+          <VictoryAxis padding={2} label="Junction Number" />
+          <VictoryAxis dependentAxis tickFormat={ticky} label="Occurrence" />
           <VictoryBar
             barWidth={5}
             data={junctions}
@@ -106,12 +115,43 @@ export default class ResultsPage extends Component {
     );
   };
 
+  renderIncidentsByType = () => {
+    // Create a pie chart.
+    let pieData = [];
+    this.state.data.forEach(event => {
+      let reason = event.reason;
+      let index = -1;
+      for (var i = 0; i < pieData.length; i++) {
+        if (pieData[i].x === reason) {
+          index = i;
+          break;
+        }
+      }
+
+      index === -1 ? pieData.push({ x: reason, y: 1 }) : (pieData[i].y += 1);
+    });
+
+    return (
+      <div className="incByType">
+        <h4>Pie Chart: Percentage of types of incident</h4>
+        <VictoryPie
+          padding={80}
+          data={pieData}
+          domainPadding={20}
+          padAngle={3}
+        />
+      </div>
+    );
+  };
+
   render() {
     return (
       <div className="resultsPage">
         <h1>Here are your results!</h1>
         Query: {this.props.url}
+        <this.renderIncidentsRecorded />
         <this.renderIncidentsPerJunction />
+        <this.renderIncidentsByType />
       </div>
     );
   }

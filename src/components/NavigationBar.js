@@ -8,7 +8,7 @@ export default class NavigationBar extends Component {
     return (
       <nav className="navbar">
         <Navbar fixed="top">
-          <Navbar.Brand href="home">
+          <Navbar.Brand href="search">
             Suhail's Motorway Information Query
           </Navbar.Brand>
           <Nav.Item>

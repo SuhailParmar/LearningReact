@@ -82,12 +82,6 @@ export default class App extends Component {
               return <h1>Help</h1>;
             }}
           />
-          <Route
-            path="/home"
-            render={() => {
-              return <h1>Home</h1>;
-            }}
-          />
         </div>
       </Router>
     );
