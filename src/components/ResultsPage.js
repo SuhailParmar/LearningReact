@@ -5,7 +5,7 @@ import {
   VictoryGroup,
   VictoryAxis,
   VictoryChart,
-  VictoryLabel,
+  VictoryLine,
   VictoryPie
 } from "victory";
 
@@ -144,6 +144,46 @@ export default class ResultsPage extends Component {
     );
   };
 
+  renderIncidentsByDay = () => {
+    // Create a bar chart.
+    let lineData = [
+      { x: "Mon", y: 0 },
+      { x: "Tue", y: 0 },
+      { x: "Wed", y: 0 },
+      { x: "Thu", y: 0 },
+      { x: "Fri", y: 0 },
+      { x: "Sat", y: 0 },
+      { x: "Sun", y: 0 }
+    ];
+
+    this.state.data.forEach(event => {
+      let day = event.time_day_worded;
+      for (var i = 0; i < lineData.length; i++) {
+        if (lineData[i].x === day) {
+          lineData[i].y += 1;
+          break;
+        }
+      }
+    });
+
+    // Create the values for the Y axis
+    let ticky = [];
+    lineData.forEach(j => {
+      ticky.push(j.y);
+    });
+
+    return (
+      <div className="incByDay">
+        <h4>Line Chart: Number of incidents per day</h4>
+        <VictoryChart>
+          <VictoryAxis dependentAxis tickFormat={ticky} label="Occurrence" />
+          <VictoryAxis padding={20} label="Day of the week" />
+          <VictoryLine data={lineData} sortKey="x" />
+        </VictoryChart>
+      </div>
+    );
+  };
+
   render() {
     return (
       <div className="resultsPage">
@@ -152,6 +192,7 @@ export default class ResultsPage extends Component {
         <this.renderIncidentsRecorded />
         <this.renderIncidentsPerJunction />
         <this.renderIncidentsByType />
+        <this.renderIncidentsByDay />
       </div>
     );
   }
