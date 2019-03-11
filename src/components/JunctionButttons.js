@@ -28,7 +28,7 @@ export default class JunctionButtons extends Component {
       <div className="juncButtons">
         <h4> {header} </h4>
         <button
-          className="J3"
+          className="3"
           style={{
             backgroundColor: this.state.buttonColours[0],
             margin: "10px",
@@ -39,7 +39,7 @@ export default class JunctionButtons extends Component {
           J3
         </button>
         <button
-          className="J10"
+          className="10"
           style={{
             backgroundColor: this.state.buttonColours[1],
             margin: "10px",
@@ -47,10 +47,10 @@ export default class JunctionButtons extends Component {
           }}
           onClick={e => this.handleClick(1, e)}
         >
-          J41
+          J10
         </button>
         <button
-          className="J19"
+          className="19"
           style={{
             backgroundColor: this.state.buttonColours[2],
             margin: "10px",
@@ -58,7 +58,7 @@ export default class JunctionButtons extends Component {
           }}
           onClick={e => this.handleClick(2, e)}
         >
-          J32
+          J19
         </button>
       </div>
     );
