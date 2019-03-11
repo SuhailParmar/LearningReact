@@ -1,14 +1,13 @@
 /* The navigation bar */
 
-html {
-  font-family: sans-serif;
-  margin: auto;
-  width: 50%;
+html * {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .navbar {
   overflow: hidden;
   width: 100%;
+  margin: auto;
   background-color: #000;
   text-align: center;
 }
@@ -73,6 +72,13 @@ html {
 }
 
 .submit {
+  padding: 14px 16px;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.resultsPage{
   padding: 14px 16px;
   margin: auto;
   width: 50%;
