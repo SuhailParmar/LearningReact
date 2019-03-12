@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavigationBar from "./components/NavigationBar";
-//import MotorwayMap from "./components/Image";
+import MotorwayMap from "./components/Image";
 import MotorwayButtons from "./components/MotorwayButtons";
 import DaysButtons from "./components/DaysOfWeek";
 import IncidentButtons from "./components/IncidentButtons";
@@ -50,6 +50,7 @@ export default class App extends Component {
             render={() => {
               return (
                 <div className="searchPage">
+                  <MotorwayMap />
                   <h1 className="searchTitle">{title}</h1>
                   <div className="searchTextDiv">{middletext}</div>
                   <MotorwayButtons stateHandler={this.stateHandler} />

@@ -1,12 +1,13 @@
 /* The navigation bar */
 
 html * {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .navbar {
   overflow: hidden;
   width: 100%;
+  float: left;
   margin: auto;
   background-color: #000;
   text-align: center;
@@ -29,16 +30,6 @@ html * {
 .motorwayMapContainer {
   height: 100px;
   width: 100px;
-}
-
-.motorwayMapImage {
-  object-fit: scale-down;
-  /*;
-  height: auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;*/
 }
 
 .searchTextDiv {
@@ -78,7 +69,7 @@ html * {
   text-align: center;
 }
 
-.resultsPage{
+.resultsPage {
   padding: 14px 16px;
   margin: auto;
   width: 50%;
