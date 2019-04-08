@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MotorwayMap from "./Image";
 import { authenticatedRequest } from "../middleware/request";
 import {
   VictoryBar,
@@ -217,7 +218,7 @@ export default class ResultsPage extends Component {
             sortKey="x"
             data={lineData}
             barWidth={5}
-            //labels={l => `${l.x}:00`}
+          //labels={l => `${l.x}:00`}
           />
         </VictoryChart>
       </div>
@@ -226,15 +227,18 @@ export default class ResultsPage extends Component {
 
   render() {
     return (
-      <div className="resultsPage">
-        <h1>Here are your results!</h1>
-        Query: {this.props.url}
-        <this.renderIncidentsRecorded />
-        <this.renderIncidentsPerJunction />
-        <this.renderIncidentsByType />
-        <this.renderIncidentsByDay />
-        <this.renderIncidentsByHour />
+      <div className="App">
+        <div className="resultsPage">
+          <h1>Here are your results!</h1>
+          Query: {this.props.url}
+          <this.renderIncidentsRecorded />
+          <this.renderIncidentsPerJunction />
+          <this.renderIncidentsByType />
+          <this.renderIncidentsByDay />
+          <this.renderIncidentsByHour />
+        </div>
       </div>
+
     );
   }
 }

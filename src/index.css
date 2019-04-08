@@ -74,4 +74,10 @@ html * {
   margin: auto;
   width: 50%;
   text-align: center;
+
+
+}
+
+.App{
+  background-image: url(mw_map.png)
 }
